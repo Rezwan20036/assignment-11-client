@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+}
+
+:root {
+  --primary: #006400;
+  --primary-hover: #004d00;
+  color-scheme: light;
+}
+
+html.dark {
+  --primary: #22c55e;
+  --primary-hover: #4ade80;
+  color-scheme: dark;
+}
+
+/* Enable class-based dark mode in Tailwind v4 */
+@variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  body {
+    @apply bg-white text-gray-900 transition-colors duration-200 antialiased min-h-screen;
+    margin: 0;
+  }
+
+  html.dark body {
+    @apply bg-gray-950 text-gray-50;
+  }
+}
